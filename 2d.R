@@ -28,12 +28,12 @@ generate_walk <- function(num_rolls) {
   for (i in 1:num_rolls) {
     move_to_dot <- roll_dice(num_rolls = 1) |>
       select_dot()
-    position <- change_position(position = position, dot = move_to_dot)
+    position <-
+      change_position(position = position, dot = move_to_dot)
     visits <- append(visits, list(position))
   }
 
-  df <- data.frame(
-    matrix(unlist(visits), byrow = T, ncol = 2),
+  df <- data.frame(matrix(unlist(visits), byrow = T, ncol = 2),
     step = 1:(num_rolls + 1)
   )
   colnames(df) <- c("x", "y", "step")
@@ -43,7 +43,8 @@ generate_walk <- function(num_rolls) {
 
 walk <- generate_walk(200000)
 
-dot_coords_df <- data.frame(matrix(unlist(dot_coords), byrow = T, ncol = 2))
+dot_coords_df <-
+  data.frame(matrix(unlist(dot_coords), byrow = T, ncol = 2))
 colnames(dot_coords_df) <- c("x", "y")
 
 p <- ggplot(walk, aes(x = x, y = y)) +
@@ -51,15 +52,27 @@ p <- ggplot(walk, aes(x = x, y = y)) +
   geom_point(size = 0.3, stroke = NA) +
   xlim(0, 1) +
   ylim(0, 1) +
-  theme(aspect.ratio = 1) + # doesn't work
   geom_point(
-    data = dot_coords_df, mapping = aes(x = x, y = y),
+    data = dot_coords_df,
+    mapping = aes(x = x, y = y),
     color = "red",
     alpha = .5
+  ) +
+  coord_fixed(
+    ratio = 1,
+    xlim = c(0, 1),
+    ylim = c(0, 1),
+    expand = TRUE,
+    clip = "on"
   )
 
+
 ggsave(
-  "plots/2d_walk.png", p,
-  dpi = 1000, width = 15, height = 15, units = "cm"
+  "plots/2d_walk.png",
+  p,
+  dpi = 1000,
+  width = 15,
+  height = 15,
+  units = "cm"
 )
 # ggplotly(p)
