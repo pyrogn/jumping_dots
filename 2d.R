@@ -20,7 +20,6 @@ roll_dice <- function(num_rolls) {
   sample(1:6, num_rolls, replace = TRUE)
 }
 
-num_rolls <- 30
 position <- c(0, 0)
 generate_walk <- function(num_rolls) {
   visits <- list(position)
