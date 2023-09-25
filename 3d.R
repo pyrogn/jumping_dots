@@ -25,7 +25,7 @@ colnames(walk) <- c("x", "y", "z")
 
 fig <- plot_ly(
   walk,
-  x = ~x, y = ~y, z = ~z # ,
+  x = ~x, y = ~y, z = ~z, color = ~z # ,
   # color = ~am, colors = c('#BF382A', '#0C4B8E')
 )
 fig <- fig %>% add_markers()
