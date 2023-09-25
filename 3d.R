@@ -12,7 +12,7 @@ dot_coords <- list(
 position <- c(0, 0, 0)
 
 walk <- generate_walk(
-  100000,
+  200000,
   dot_coords = dot_coords, position = position,
   max_dice = 10
 ) |>
@@ -28,7 +28,7 @@ fig <- plot_ly(
   x = ~x, y = ~y, z = ~z, color = ~z # ,
   # color = ~am, colors = c('#BF382A', '#0C4B8E')
 )
-fig <- fig %>% add_markers()
+fig <- fig %>% add_markers(size = 1)
 fig <- fig %>% layout(scene = list(
   xaxis = list(title = "x"),
   yaxis = list(title = "y"),

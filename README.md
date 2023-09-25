@@ -6,7 +6,4 @@
 
 ## 3D walk
 
-> [!WARNING]
-> **Work in progress**
-
 <img src="./plots/3d_walk.png" width="700"/>
