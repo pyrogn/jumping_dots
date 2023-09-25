@@ -1,5 +1,6 @@
 styler:::style_active_file()
-
+library(plotly)
+require(ggplot2)
 source("./funcs.R")
 
 dot_choose <- as.numeric(gl(3, 2))
@@ -11,8 +12,9 @@ position <- c(0, 0)
 
 walk <- generate_walk(
   1000000,
-  dot_coords = dot_coords, position = position
-  ) |>
+  dot_coords = dot_coords,
+  position = position
+) |>
   as.data.frame()
 colnames(walk) <- c("x", "y")
 
