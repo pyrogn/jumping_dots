@@ -4,19 +4,21 @@ source("./funcs.R")
 
 dot_choose <- as.numeric(gl(3, 2))
 # equilateral triangle with side=1
-dot_coords <- list(c(0, 0), c(1, 0), c(0.5, sqrt(0.75)))
+dot_coords <- list(
+  c(0, 0, 0), c(1, 0, 0), c(0.5, sqrt(0.75), 0), c(1, 1, 1)
+  )
 # or centered with ((+/-)L/2; -sqrt(3)*L/4) and top (0; sqrt(3)*L/4)
 
-position <- c(0, 0)
+position <- c(0, 0, 0)
 
 walk <- generate_walk(
-  1000000,
+  100000,
   dot_coords = dot_coords, position = position
-  ) |>
+) |>
   as.data.frame()
-colnames(walk) <- c("x", "y")
+colnames(walk) <- c("x", "y", "z")
 
-dot_coords_df <-
+zot_coords_df <-
   data.frame(matrix(unlist(dot_coords), byrow = T, ncol = 2))
 colnames(dot_coords_df) <- c("x", "y")
 
